@@ -26,15 +26,15 @@ public class WordCount {
 
         private Text word = new Text();
 
-        //map函数
+        //map函数，想象map函数中的输入就是从文件中读取的一行内容，即为value
         public void map(Object key, Text value, Context context
         ) throws IOException, InterruptedException {
             StringTokenizer itr = new StringTokenizer(value.toString());
-            // 按行读取？
+            // value为一行数据，map是按行读取的
             while (itr.hasMoreTokens()) {
                 word.set(itr.nextToken());
                 context.write(word, one);
-                System.out.println(word);
+//                System.out.println(word);
             }
         }
     }

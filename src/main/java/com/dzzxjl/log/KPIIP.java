@@ -25,7 +25,6 @@ public class KPIIP {
         private Text word = new Text();
         private Text ips = new Text();
 
-        @Override
         public void map(Object key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
             KPI kpi = KPI.filterIPs(value.toString());
             if (kpi.isValid()) {
@@ -40,7 +39,7 @@ public class KPIIP {
         private Text result = new Text();
         private Set<String> count = new HashSet<String>();
 
-        @Override
+
         public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
             while (values.hasNext()) {
                 count.add(values.next().toString());

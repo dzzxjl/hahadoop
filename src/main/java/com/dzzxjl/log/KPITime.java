@@ -25,7 +25,6 @@ public class KPITime {
         private IntWritable one = new IntWritable(1);
         private Text word = new Text();
 
-        @Override
         public void map(Object key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
             KPI kpi = KPI.filterBroswer(value.toString());
             if (kpi.isValid()) {
@@ -42,7 +41,6 @@ public class KPITime {
     public static class KPITimeReducer extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
         private IntWritable result = new IntWritable();
 
-        @Override
         public void reduce(Text key, Iterator<IntWritable> values, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
             int sum = 0;
             while (values.hasNext()) {

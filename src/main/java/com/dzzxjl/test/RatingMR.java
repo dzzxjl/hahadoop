@@ -35,7 +35,7 @@ public class RatingMR {
 
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
-
+//    RecordReader
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 //        FileInputFormat.addInputPath(job,
@@ -44,7 +44,7 @@ public class RatingMR {
         job.waitForCompletion(true);
     }
 
-    //Map类，封装KV键值对 &lt;k1,v1,k2,v2&gt; ， k1 是偏移量，v1 是这行数据，输出类型是这行文本 k2 ，浮点类型 v2
+    //Map类，封装KV键值对 <k1,v1,k2,v2>， k1 是偏移量，v1 是这行数据，输出类型是这行文本 k2 ，浮点类型 v2
     public static class Map extends Mapper<LongWritable, Text, Text, FloatWritable>{
         //创建Text，FloatWritable 对象
         private Text video_name = new Text();
