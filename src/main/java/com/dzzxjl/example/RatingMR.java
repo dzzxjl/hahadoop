@@ -1,4 +1,4 @@
-package com.dzzxjl.test;
+package com.dzzxjl.example;
 
 import org.apache.hadoop.conf.*;
 import org.apache.hadoop.fs.Path;

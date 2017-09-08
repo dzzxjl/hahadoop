@@ -17,11 +17,12 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class WordCount {
 
     /*
-    Mapper类
+    继承自Mapper类，并重写map()方法
      */
     public static class TokenizerMapper
             extends Mapper<Object, Text, Text, IntWritable> {
-        // final关键字定义1？？？
+        // IntWritable和Text类是Hadoop对int和string类的封装
+        // final关键字不可修改
         private final static IntWritable one = new IntWritable(1);
 
         private Text word = new Text();
