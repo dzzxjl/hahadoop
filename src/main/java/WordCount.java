@@ -23,13 +23,13 @@ public class WordCount {
             extends Mapper<Object, Text, Text, IntWritable> {
         // IntWritable和Text类是Hadoop对int和string类的封装
         // final关键字不可修改
+        // mapreduce中使用的1
         private final static IntWritable one = new IntWritable(1);
 
         private Text word = new Text();
 
         //map函数，想象map函数中的输入就是从文件中读取的一行内容，即为value
-        public void map(Object key, Text value, Context context
-        ) throws IOException, InterruptedException {
+        public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
             StringTokenizer itr = new StringTokenizer(value.toString());
             // value为一行数据，map是按行读取的
             while (itr.hasMoreTokens()) {
@@ -59,17 +59,21 @@ public class WordCount {
     }
 
     public static void main(String[] args) throws Exception {
-        // 加载配置
+        // 创建配置
         Configuration conf = new Configuration();
-        // 使用单例模式创建一个名为word count的job
+        // 加载配置，使用单例模式创建一个名为word count的job
         Job job = Job.getInstance(conf, "word count");
         // 加载本类
         job.setJarByClass(WordCount.class);
+
+
         //  加载Map模型
         job.setMapperClass(TokenizerMapper.class);
         // 加载Reduce模型
         job.setCombinerClass(IntSumReducer.class);
         job.setReducerClass(IntSumReducer.class);
+
+
         // 设置输出类
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);

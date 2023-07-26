@@ -51,8 +51,8 @@ public class KPIBrowser {
     public static void main(String[] args) throws Exception {
 //        String input = "hdfs://192.168.1.210:9000/user/hdfs/log_kpi";
 //        String output = "hdfs://192.168.1.210:9000/user/hdfs/log_kpi/browser";
-        String input = "/Users/dzzxjl/Documents/ml/hadoopTest/logfile/access.log.10";
-        String output = "/Users/dzzxjl/Documents/ml/hadoopTest/logfileResult/";
+        String input = "/Users/dzzxjl/Documents/ml/hahadoop/logfile/access.log.10";
+        String output = "/Users/dzzxjl/Documents/ml/hahadoop/logfileResult/";
 
         JobConf conf = new JobConf(KPIBrowser.class);
         conf.setJobName("KPIBrowser");
